@@ -26,15 +26,15 @@ const config = {
     customSounds: [
         {
             name: "Forza",
-            url: "https://raw.githubusercontent.com/aschenkuttel/kuttimate-sounds/3d51cde3a235c43f82071f6bba5c872a44e0ac4f/forza.mp3"
+            url: "https://cdn.jsdelivr.net/gh/aschenkuttel/ds-kuttimate/sounds/forza.mp3"
         },
         {
             name: "Garmin",
-            url: "https://raw.githubusercontent.com/aschenkuttel/kuttimate-sounds/3d51cde3a235c43f82071f6bba5c872a44e0ac4f/garmin.mp3"
+            url: "https://cdn.jsdelivr.net/gh/aschenkuttel/ds-kuttimate/sounds/garmin.mp3"
         },
         {
             name: "Merkel",
-            url: "https://raw.githubusercontent.com/aschenkuttel/kuttimate-sounds/3d51cde3a235c43f82071f6bba5c872a44e0ac4f/merkel.mp3"
+            url: "https://cdn.jsdelivr.net/gh/aschenkuttel/ds-kuttimate/sounds/merkel.mp3"
         }
     ]
 }
