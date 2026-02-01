@@ -42,6 +42,7 @@ const config = {
 
 const baseUrl = "https://api.tw-connect.com"
 let ignoredPlayers = {}
+let ignoredLeastOneRow = false
 
 async function updateIgnoredPlayers() {
     try {
@@ -69,11 +70,25 @@ async function updateIgnoredPlayers() {
 }
 
 function markIgnoredRows(rows) {
+    let _ignoredLeastOneRow = false
+
     rows.forEach(row => {
         if (isRowIgnored(row)) {
             row.style.backgroundColor = "rgba(244, 0, 0, 0.25)" // light red
+            _ignoredLeastOneRow = true
         }
     })
+
+    ignoredLeastOneRow = _ignoredLeastOneRow
+    const button = document.getElementById("selectIgnoredButton")
+
+    if (!ignoredLeastOneRow) {
+        button.classList.add("disabled")
+        button.style.pointerEvents = "none"
+    } else {
+        button.classList.remove("disabled")
+        button.style.pointerEvents = "auto"
+    }
 }
 
 function isRowIgnored(row) {
@@ -131,6 +146,7 @@ async function main() {
     scriptIcon.style.marginRight = "8px"
 
     const selectIgnoredButton = document.createElement("button")
+    selectIgnoredButton.id = "selectIgnoredButton"
     selectIgnoredButton.textContent = "Select Ignored"
     selectIgnoredButton.classList.add("btn", "btn-sm", "btn-secondary")
     selectIgnoredButton.style.height = "28.9px"
