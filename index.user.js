@@ -38,8 +38,8 @@ const config = {
     ]
 }
 
-const attackMovementRe = new RegExp("^(Attack|Conquest|Wallbreaker|Fake(?!\\s*Support))$")
-const movementRe = new RegExp("^(Attack|Conquest|Wallbreaker|Fake|Support|Fast Support|Long-term Support \\(LTS\\)|Fake Support)$")
+const attackMovementRe = new RegExp("^(Attack|Offensiv|Eroberung|Conquest|Wallbreaker|Wallbrecher|Fake(?!\\s*Support))$")
+const movementRe = new RegExp("^(Attack|Offensiv|Eroberung|Conquest|Wallbreaker|Wallbrecher|Fake|Support|Unterstützung|Fast Support|Schnelle Unterstützung|Stand Unterstützung|Long-term Support \\(LTS\\)|Fake Support)$|Fake Unterstützung")
 
 const baseUrl = "https://api.tw-connect.com"
 let ignoredPlayers = {}
