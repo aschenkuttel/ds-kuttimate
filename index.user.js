@@ -18,6 +18,14 @@ const config = {
         316, // 21:00!
         613, // WaK
         649, // ZG
+        547, // WuT2
+        663, // NiMa!
+        825, // 9/10
+        103, // WAO
+        77, // WAO2
+        48, // SAMT
+        698, // WAO3
+        711, // Samt2
     ],
     paginationOptions: [
         200, // that's the maximum DS Ultimate allows
