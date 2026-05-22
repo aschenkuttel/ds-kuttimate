@@ -10,22 +10,9 @@
 
 
 const config = {
+    world: 255,
     ignoredTribeIDs: [
-        178, // GODS
-        212, // UB
-        805, // SB
-        309, // 21:00
-        316, // 21:00!
-        613, // WaK
-        649, // ZG
-        547, // WuT2
-        663, // NiMa!
-        825, // 9/10
-        103, // WAO
-        77, // WAO2
-        48, // SAMT
-        698, // WAO3
-        711, // Samt2
+        1, // SAT
     ],
     paginationOptions: [
         200, // that's the maximum DS Ultimate allows
@@ -56,7 +43,7 @@ let includeSupports = false
 
 async function updateIgnoredPlayers() {
     try {
-        const response = await fetch(`${baseUrl}/player/de244`)
+        const response = await fetch(`${baseUrl}/player/de${config.world}`)
 
         if (!response.ok) {
             return
@@ -72,7 +59,7 @@ async function updateIgnoredPlayers() {
             }
         }
 
-        localStorage.setItem('ds-kuttimate-ignored', JSON.stringify(ignoredPlayers))
+        localStorage.setItem(`dsk-ignored-${config.world}`, JSON.stringify(ignoredPlayers))
         console.log(`Updated ignored players list with ${Object.keys(ignoredPlayers).length} players.`)
     } catch (error) {
         console.error("Error fetching player data:", error)
@@ -121,6 +108,7 @@ function isRowIgnored(row) {
 
     const defenderLink = playerLinks[1]
     const playerID = parseInt(defenderLink.href.split("/").pop())
+
     return ignoredPlayers[playerID] !== undefined
 }
 
@@ -134,7 +122,7 @@ function manuallyCheckRows(body) {
 
 async function main() {
     console.log("DS-Kuttimate script loaded.")
-    const rawPlayerIDs = localStorage.getItem('ds-kuttimate-ignored')
+    const rawPlayerIDs = localStorage.getItem(`dsk-ignored-${config.world}`)
 
     if (!rawPlayerIDs) {
         console.log("No player IDs found in local storage, fetching from API.")
@@ -265,8 +253,8 @@ async function main() {
 }
 
 
-if (document.title.includes("244")) {
+if (document.title.includes(config.world.toString())) {
     void main()
 } else {
-    console.log("DS-Kuttimate script only running on server 244.")
+    console.log(`DS-Kuttimate script only running on server ${config.world}.`)
 }
